@@ -1,36 +1,40 @@
-# Array and ArrayList Recursion
+# Insertion Sort and Merge
 
-For homework, you write a couple methods to practice working with recursion. You should practice using recursion for all of these problems! For all of these methods you should write both the recursive method and the wrapper method. You may adjust the parameters for your recursive method, but **don't change** the parameters for the wrapper methd. 
+For homework, you will write two methods relating to sorting.
 
-First, write a method to check if an ArrayList is sorted in non-decreasing order.
+First, finish writing the code from class where you were working on insertion sort. Here is the general pseudocode for insertion sort:
 
-The wrapper method should have the following signature:
+* Create a new ArrayList (this will be the sorted output list)
+* Loop through the original list:
+  * Get the next element that you are inserting
+  * Find the index that this element should be inserted at (you can find this by looping through the output list; the element should be inserted before the first number in the output list that is larger than it)
+  * Insert the element at this index
+* Return the output list
+
+Your method should have the following signature:
 
 ```shell script
-public static boolean isSorted(ArrayList<Integer> list) { }
+public static ArrayList<Integer> insertionSort(ArrayList<Integer> list) { }
 ```
 
 <br />
 <br />
 
-Next, write a method to check if an array contains exactly **count** copies of the given integer x. (For instance, if we wanted to see if an array contained exactly 3 copies of the number 12, then we would have x = 12 and count = 3).
+Next, write a method to implement the merge method. As a reminder, the merge method takes two sorted arrays as input and returns one large, combined sorted array.
 
-The wrapper method should have the following signature:
+Here is the pseudocode for merge:
+* Start at the beginning of both input arrays
+* Take the smaller of the two values and add it to the output array
+* Repeat until we’ve gone through all of the values in one of the arrays
+* Copy the remaining values from the the other array into the output array
+
+
+The method should have the following signature:
 ```shell script
-public static boolean hasCountCopies(int[] arr, int x, int count) { }
+public static int[] merge(int[] arr1, int[] arr2) { }
 ```
 
 <br />
-<br />
-
-Finally, implement binary search recursively. Note that the variables that we used for binary search (lowerBound and upperBound) are  **parameters** for the recursive method you have been provided with. 
-
-Your wrapper method should have the follwing signature:
-
-```shell script
-public static boolean binarySearch(int[] arr, int num) { }
-```
-
 <br />
 
 ## Run your code with:

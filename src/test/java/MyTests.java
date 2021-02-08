@@ -8,33 +8,30 @@ import java.util.Arrays;
 public class MyTests {
 
     @Test
-    public void testIsSorted() {
+    public void testInsertionSort() {
         ArrayList<Integer> list1 = new ArrayList<Integer>(Arrays.asList(new Integer[] {1, 2, 3, 4}));
-        ArrayList<Integer> list2 = new ArrayList<Integer>(Arrays.asList(new Integer[] {1, 1, 2, 2}));
-        ArrayList<Integer> list3 = new ArrayList<Integer>(Arrays.asList(new Integer[] {-5, -3, -1, 2}));
-        ArrayList<Integer> list4 = new ArrayList<Integer>(Arrays.asList(new Integer[] {1, 2, 1, 4}));
-        ArrayList<Integer> list5 = new ArrayList<Integer>(Arrays.asList(new Integer[] {1, 2, 3, 2}));
-        assertEquals(true, MyMain.isSorted(list1), "Whether or not the ArrayList [1, 2, 3, 4] is sorted should be: true");
-        assertEquals(true, MyMain.isSorted(list2), "Whether or not the ArrayList [1, 1, 2, 2] is sorted should be: true");
-        assertEquals(true, MyMain.isSorted(list3), "Whether or not the ArrayList [-5, -3, -1, 2] is sorted should be: true");
-        assertEquals(false, MyMain.isSorted(list4), "Whether or not the ArrayList [1, 2, 1, 4] is sorted should be: false");
-        assertEquals(false, MyMain.isSorted(list5), "Whether or not the ArrayList [1, 2, 3, 2] is sorted should be: false");
-    }
-
-   @Test
-    public void testHasCountCopies() {
-        assertEquals(false, MyMain.hasCountCopies(new int[] {1, 2, 5, 2, 1, 3, 2}, 2, 1), "Whether or not the array [1, 2, 5, 2, 1, 3, 2] contains exactly 1 copy of 2 should be: false");
-        assertEquals(true, MyMain.hasCountCopies(new int[] {1, 2, 5, 2, 1, 3, 2}, 2, 3), "Whether or not the array [1, 2, 5, 2, 1, 3, 2] contains exactly 3 copies of 2 should be: true");
-        assertEquals(false, MyMain.hasCountCopies(new int[] {1, 2, 5, 2, 1, 3, 2}, 2, 4), "Whether or not the array [1, 2, 5, 2, 1, 4, 2] contains exactly 4 copies of 2 should be: false");
-        assertEquals(false, MyMain.hasCountCopies(new int[] {1, 2, 5, 2, 1, 3, 2}, 1, 1), "Whether or not the array [1, 2, 5, 2, 1, 3, 2] contains exactly 1 copy of 1 should be: false");
-        assertEquals(true, MyMain.hasCountCopies(new int[] {1, 2, 5, 2, 1, 3, 2}, 1, 2), "Whether or not the array [1, 2, 5, 2, 1, 3, 2] contains exactly 2 copies of 1 should be: true");
-        assertEquals(false, MyMain.hasCountCopies(new int[] {1, 2, 5, 2, 1, 3, 2}, 1, 4), "Whether or not the array [1, 2, 5, 2, 1, 4, 2] contains exactly 4 copies of 1 should be: false");
+        ArrayList<Integer> list2 = new ArrayList<Integer>(Arrays.asList(new Integer[] {2, -5, -1, -3}));
+        ArrayList<Integer> list3 = new ArrayList<Integer>(Arrays.asList(new Integer[] {1, 2, 1, 4, 5, 3, 7}));
+        assertEquals("[1, 2, 3, 4]", MyMain.insertionSort(list1).toString(), "The list [1, 2, 3, 4] when sorted should be: [1, 2, 3, 4]");
+        assertEquals("[-5, -3, -1, 2]", MyMain.insertionSort(list2).toString(), "The list [2, -5, -1, -3] when sorted should be: [-5, -3, -1, 2]");
+        assertEquals("[1, 1, 2, 3, 4, 5, 7]", MyMain.insertionSort(list3).toString(), "The list [1, 2, 1, 4, 5, 3, 7] when sorted should be: [1, 1, 2, 3, 4, 5, 7]");
     }
 
     @Test
-    public void testBinarySearch() {
-        assertEquals(true, MyMain.binarySearch(new int[] {1, 2, 4, 5, 7, 8, 10}, 2), "Whether or not the array [1, 2, 4, 5, 7, 8, 10] contains 2 should be: true");
-        assertEquals(true, MyMain.binarySearch(new int[] {-5, 2, 7, 13, 25, 38, 42, 58, 70, 72, 100, 104, 128}, 104), "Whether or not the array [-5, 2, 7, 13, 25, 38, 42, 58, 70, 72, 100, 104, 128] contains 104 should be: true");
-        assertEquals(false, MyMain.binarySearch(new int[] {-5, 2, 7, 13, 25, 38, 42, 58, 70, 72, 100, 104, 128}, 99), "Whether or not the array [-5, 2, 7, 13, 25, 38, 42, 58, 70, 72, 100, 104, 128] contains 99 should be: false");
+    public void testMerge() {
+        int[] arr1 = {1, 3, 4, 6};
+        int[] arr2 = {2, 5, 7, 8};
+
+        int[] arr3 = {-4, 5, 7, 8};
+        int[] arr4 = {-5, -1, 2, 3};
+
+        int[] arr5 = {1, 3, 4, 6, 10, 11, 15, 16};
+        int[] arr6 = {2, 5, 7, 8, 9, 13, 20, 21};
+        
+        assertEquals("[1, 2, 3, 4, 5, 6, 7, 8]", Arrays.toString(MyMain.merge(arr1, arr2)), "The result of merging [1, 3, 4, 6] with [2, 5, 7, 8] should be: [1, 2, 3, 4, 5, 6, 7, 8]");
+        assertEquals("[-5, -4, -1, 2, 3, 5, 7, 8]", Arrays.toString(MyMain.merge(arr3, arr4)), "The result of merging [-4, 5, 7, 8] with [-5, -1, 2, 3] should be: [-5, -4, -1, 2, 3, 5, 7, 8]");
+        assertEquals("[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16, 20, 21]", Arrays.toString(MyMain.merge(arr5, arr6)), "The result of merging [1, 3, 4, 6, 10, 11, 15, 16] with [2, 5, 7, 8, 9, 13, 20, 21] should be: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16, 20, 21]");
     }
+
+   
 }
