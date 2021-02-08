@@ -1,6 +1,6 @@
 # Insertion Sort and Merge
 
-For homework, you will write two methods relating to sorting.
+For homework, you will write two methods relating to sorting. **You don't need to use recursion for either of these methods**!
 
 First, finish writing the code from class where you were working on insertion sort. Here is the general pseudocode for insertion sort:
 
